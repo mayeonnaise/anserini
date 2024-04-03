@@ -112,6 +112,10 @@
               <id>FeatureExtractorCli</id>
             </program>
             <program>
+              <mainClass>io.anserini.query_index.QueryIndexCollection</mainClass>
+              <id>QueryIndexCollection</id>
+            </program>
+            <program>
               <mainClass>io.anserini.index.IndexCollection</mainClass>
               <id>IndexCollection</id>
             </program>
@@ -317,6 +321,11 @@
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
+      <version>${lucene.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-monitor</artifactId>
       <version>${lucene.version}</version>
     </dependency>
     <dependency>
