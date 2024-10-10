@@ -131,9 +131,12 @@ public abstract class AbstractIndexer<K extends Comparable<K>> implements Runnab
     LOG.info("============ Indexing Collection ============");
     final long start = System.nanoTime();
 
-    List<MonitorQuery> monitorQueries = topics.values().stream().map(entry -> {
-      String queryString = entry.get(args.topicField);
-      return new MonitorQuery("",
+    List<MonitorQuery> monitorQueries = topics.entrySet().stream().map(entry -> {
+      K queryId = entry.getKey();
+      Map<String, String> queryFields = entry.getValue();
+      String queryString = queryFields.get(args.topicField);
+
+      return new MonitorQuery(queryId.toString(),
           this.queryGenerator.buildQuery(Constants.CONTENTS, analyzer, queryString), queryString,
           new HashMap<>());
     }).collect(Collectors.toList());
